@@ -38,40 +38,7 @@ Both stages are exported to ONNX format and deployed using an edge inference run
 
 ## System Architecture
 
-
-                    ┌───────────────────────────┐
-                    │           Cloud           │
-                    │                           │
-                    │  • Synthetic Data Gen     │
-                    │  • Model Training  (with use of mobilenet_v3_small-047dcff4)       
-                    │  • Model Optimization     │
-                    │  • ONNX Export            │
-                    └─────────────┬─────────────┘
-                                  │
-                        Optimized ONNX Models
-                                  │
-                                  ▼
-┌────────────────────────────────────────────────────────┐
-│                        Edge Device                     │
-│                                                        │
-│  SEM / Optical Inspection Image                        │
-│              │                                         │
-│              ▼                                         │
-│  Stage 1: Defect Detection                             │
-│  • Lightweight CNN                                     │
-│  • Normal vs Defect                                    │
-│              │                                         │
-│      ┌───────┴────────┐                                │
-│      │                │                                │
-│   Normal           Defect                              │
-│      │                │                                │
-│   Discard        ▼ Stage 2: Defect Classification      │
-│                  • Multi-class Lightweight CNN         │
-│                  • Defect Type Output                  │
-│                                                        │
-│              ▼                                         │
-│       Defect Label / Decision                          │
-└────────────────────────────────────────────────────────┘
+![alt text](image-2.png)
 
 
 ---------------------------------------
@@ -131,18 +98,7 @@ Grayscale SEM-style textures
 ## Model Design & Trainin
 
 *** training workflow 
-
-Synthetic / Real Data
-        ↓
-Data Augmentation
-        ↓
-Stage 1 Training (Binary)
-        ↓
-Stage 2 Training (Multi-class)
-        ↓
-Model Validation
-        ↓
-ONNX Export
+![alt text](image-1.png)
 
 ---------------------------------------
 
@@ -150,15 +106,7 @@ ONNX Export
 
 ** Two-Stage Execution Flow on Edge
 
-Input Image
-     ↓
-Stage 1 Inference (Normal vs Defect)
-     ↓
-If Normal → Discard / Log
-If Defect → Stage 2 Inference
-     ↓
-Defect Class Output
-
+![alt text](image.png)
 ---------------------------------------
 
 ## Results & Evaluation
