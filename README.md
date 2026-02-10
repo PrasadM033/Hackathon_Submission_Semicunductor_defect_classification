@@ -38,7 +38,7 @@ Both stages are exported to ONNX format and deployed using an edge inference run
 
 ## System Architecture
 
-![alt text](image-2.png)
+![Inference Pipeline](Doc/Model_arch.png)
 
 
 ---------------------------------------
@@ -98,7 +98,7 @@ Grayscale SEM-style textures
 ## Model Design & Trainin
 
 *** training workflow 
-![alt text](image-1.png)
+![Inference Pipeline](Doc/Training.png)
 
 ---------------------------------------
 
@@ -106,7 +106,7 @@ Grayscale SEM-style textures
 
 ** Two-Stage Execution Flow on Edge
 
-![alt text](image.png)
+![Inference Pipeline](Doc/Deployment_startegy.png)
 ---------------------------------------
 
 ## Results & Evaluation
